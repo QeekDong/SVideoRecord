@@ -46,4 +46,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.github.CGmaybe10:FocusSurfaceView:v1.0.1'
 }
