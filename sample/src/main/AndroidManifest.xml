@@ -32,6 +32,9 @@
         <activity
             android:name="com.mabeijianxi.smallvideo2.SendSmallVideoActivity"
             android:theme="@style/AppNoBarTheme" />
+        <activity
+            android:name="com.mabeijianxi.smallvideo2.MediaRecorderNewActivity"
+            android:theme="@style/AppNoBarTheme" />
     </application>
 
 </manifest>

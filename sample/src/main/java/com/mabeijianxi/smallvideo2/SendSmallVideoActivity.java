@@ -13,9 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mabeijianxi.smallvideorecord2.MediaRecorderActivity;
-
-
 /**
  * Created by jian on 2016/7/21 15:52
  * mabeijianxi@gmail.com
@@ -49,8 +46,8 @@ public class SendSmallVideoActivity extends AppCompatActivity implements View.On
 
     private void initData() {
         Intent intent = getIntent();
-        videoUri = intent.getStringExtra(MediaRecorderActivity.VIDEO_URI);
-        videoScreenshot = intent.getStringExtra(MediaRecorderActivity.VIDEO_SCREENSHOT);
+        videoUri = intent.getStringExtra(MediaRecorderNewActivity.VIDEO_URI);
+        videoScreenshot = intent.getStringExtra(MediaRecorderNewActivity.VIDEO_SCREENSHOT);
         Bitmap bitmap = BitmapFactory.decodeFile( videoScreenshot);
         iv_video_screenshot.setImageBitmap(bitmap);
         et_send_content.setHint("您视频地址为:"+videoUri);
@@ -102,7 +99,7 @@ public class SendSmallVideoActivity extends AppCompatActivity implements View.On
                                                     int which) {
                                     finish();
 
-//                                    FileUtils.deleteDir(getIntent().getStringExtra(MediaRecorderActivity.OUTPUT_DIRECTORY));
+//                                    FileUtils.deleteDir(getIntent().getStringExtra(MediaRecorderNewActivity.OUTPUT_DIRECTORY));
 
                                 }
 

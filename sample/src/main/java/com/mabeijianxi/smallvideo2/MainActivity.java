@@ -31,7 +31,6 @@ import android.widget.Toast;
 import com.mabeijianxi.smallvideorecord2.DeviceUtils;
 import com.mabeijianxi.smallvideorecord2.JianXiCamera;
 import com.mabeijianxi.smallvideorecord2.LocalMediaCompress;
-import com.mabeijianxi.smallvideorecord2.MediaRecorderActivity;
 import com.mabeijianxi.smallvideorecord2.StringUtils;
 import com.mabeijianxi.smallvideorecord2.model.AutoVBRMode;
 import com.mabeijianxi.smallvideorecord2.model.BaseMediaBitrateConfig;
@@ -268,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                 .videoBitrate(Integer.valueOf(bitrate))
                 .captureThumbnailsTime(1)
                 .build();
-        MediaRecorderActivity.goSmallVideoRecorder(this, SendSmallVideoActivity.class.getName(), config);
+        MediaRecorderNewActivity.goSmallVideoRecorder(this, SendSmallVideoActivity.class.getName(), config);
 
     }
 
@@ -373,8 +372,8 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                                 Intent intent = new Intent(MainActivity.this, SendSmallVideoActivity.class);
-                                intent.putExtra(MediaRecorderActivity.VIDEO_URI, onlyCompressOverBean.getVideoPath());
-                                intent.putExtra(MediaRecorderActivity.VIDEO_SCREENSHOT, onlyCompressOverBean.getPicPath());
+                                intent.putExtra(MediaRecorderNewActivity.VIDEO_URI, onlyCompressOverBean.getVideoPath());
+                                intent.putExtra(MediaRecorderNewActivity.VIDEO_SCREENSHOT, onlyCompressOverBean.getPicPath());
                                 startActivity(intent);
                             }
                         }).start();
