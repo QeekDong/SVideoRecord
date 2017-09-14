@@ -22,7 +22,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cymaybe.foucsurfaceview.FocusSurfaceView;
 import com.mabeijianxi.smallvideorecord2.model.MediaObject;
 import com.mabeijianxi.smallvideorecord2.model.MediaRecorderConfig;
 
@@ -80,7 +79,7 @@ public class MediaRecorderActivity extends Activity implements
     /**
      * 摄像头数据显示画布
      */
-    private FocusSurfaceView mSurfaceView;
+    private SurfaceView mSurfaceView;
     /**
      * 录制进度
      */
@@ -178,7 +177,7 @@ public class MediaRecorderActivity extends Activity implements
     private void loadViews() {
         setContentView(R.layout.activity_media_recorder);
         // ~~~ 绑定控件
-        mSurfaceView = (FocusSurfaceView) findViewById(R.id.record_preview);
+        mSurfaceView = (SurfaceView) findViewById(R.id.record_preview_old);
         title_layout = (RelativeLayout) findViewById(R.id.title_layout);
         mCameraSwitch = (CheckBox) findViewById(R.id.record_camera_switcher);
         mTitleNext = (ImageView) findViewById(R.id.title_next);

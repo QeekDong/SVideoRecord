@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.FrameLayout;
@@ -20,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cymaybe.foucsurfaceview.FocusSurfaceView;
+import com.mabeijianxi.smallvideo2.view.PreView;
 import com.mabeijianxi.smallvideorecord2.DeviceUtils;
 import com.mabeijianxi.smallvideorecord2.FileUtils;
 import com.mabeijianxi.smallvideorecord2.JianXiCamera;
@@ -82,7 +83,7 @@ public class MediaRecorderNewActivity extends Activity
     /**
      * 摄像头数据显示画布
      */
-    private FocusSurfaceView mSurfaceView;
+    private PreView mSurfaceView;
     /**
      * 录制进度
      */
@@ -139,6 +140,10 @@ public class MediaRecorderNewActivity extends Activity
     private boolean NEED_FULL_SCREEN = false;
     private RelativeLayout title_layout;
 
+    //模式切换按钮
+    private Button mThreeFourBT, mFourThreeBT, mNineSixteenBT, mSixteenNineBT, mFitImgBT, mCircleBT, mFreeBT, mSquareBT,
+            mCircleSquareBT, mCustomBT, mHeartBT;
+
     /**
      * @param context
      * @param overGOActivityName 录制结束后需要跳转的Activity全类名
@@ -180,7 +185,7 @@ public class MediaRecorderNewActivity extends Activity
     private void loadViews() {
         setContentView(R.layout.activity_sprevirew);
         // ~~~ 绑定控件
-        mSurfaceView = (FocusSurfaceView) findViewById(com.mabeijianxi.smallvideorecord2.R.id.record_preview);
+        mSurfaceView = (PreView) findViewById(R.id.record_preview);
         title_layout = (RelativeLayout) findViewById(com.mabeijianxi.smallvideorecord2.R.id.title_layout);
         mCameraSwitch = (CheckBox) findViewById(com.mabeijianxi.smallvideorecord2.R.id.record_camera_switcher);
         mTitleNext = (ImageView) findViewById(com.mabeijianxi.smallvideorecord2.R.id.title_next);
@@ -189,6 +194,30 @@ public class MediaRecorderNewActivity extends Activity
         mRecordController = (TextView) findViewById(com.mabeijianxi.smallvideorecord2.R.id.record_controller);
         mBottomLayout = (RelativeLayout) findViewById(bottom_layout);
         mRecordLed = (CheckBox) findViewById(com.mabeijianxi.smallvideorecord2.R.id.record_camera_led);
+
+        mThreeFourBT = (Button) findViewById(R.id.three_four_bt);
+        mFourThreeBT = (Button) findViewById(R.id.four_three_bt);
+        mNineSixteenBT = (Button) findViewById(R.id.nine_sixteen_bt);
+        mSixteenNineBT = (Button) findViewById(R.id.sixteen_nine_bt);
+        mFitImgBT = (Button) findViewById(R.id.fit_image_bt);
+        mCircleBT = (Button) findViewById(R.id.circle_bt);
+        mFreeBT = (Button) findViewById(R.id.free_bt);
+        mSquareBT = (Button) findViewById(R.id.square_bt);
+        mCircleSquareBT = (Button) findViewById(R.id.circle_square_bt);
+        mCustomBT = (Button) findViewById(R.id.custom_bt);
+        mHeartBT = (Button) findViewById(R.id.heart_bt);
+
+        mThreeFourBT.setOnClickListener(this);
+        mFourThreeBT.setOnClickListener(this);
+        mNineSixteenBT.setOnClickListener(this);
+        mSixteenNineBT.setOnClickListener(this);
+        mFitImgBT.setOnClickListener(this);
+        mCircleBT.setOnClickListener(this);
+        mFreeBT.setOnClickListener(this);
+        mSquareBT.setOnClickListener(this);
+        mCircleSquareBT.setOnClickListener(this);
+        mCustomBT.setOnClickListener(this);
+        mHeartBT.setOnClickListener(this);
 
         // ~~~ 绑定事件
         /*if (DeviceUtils.hasICS())
@@ -523,6 +552,43 @@ public class MediaRecorderNewActivity extends Activity
                 checkStatus();
             }
         }
+
+        switch (id) {
+            case R.id.three_four_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.RATIO_3_4);
+                break;
+            case R.id.four_three_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.RATIO_4_3);
+                break;
+            case R.id.nine_sixteen_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.RATIO_9_16);
+                break;
+            case R.id.sixteen_nine_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.RATIO_16_9);
+                break;
+            case R.id.fit_image_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.FIT_IMAGE);
+                break;
+            case R.id.circle_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.CIRCLE);
+                break;
+            case R.id.free_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.FREE);
+                break;
+            case R.id.square_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.SQUARE);
+                break;
+            case R.id.circle_square_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.CIRCLE_SQUARE);
+                break;
+            case R.id.custom_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.CUSTOM);
+            case R.id.heart_bt:
+                mSurfaceView.setCropMode(PreView.CropMode.SWEETHEART);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -703,4 +769,14 @@ public class MediaRecorderNewActivity extends Activity
         mProgressDialog = null;
 
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
 }

@@ -7,31 +7,31 @@
 
     <FrameLayout
         android:id="@+id/lyout"
-        android:layout_below="@+id/record_progress"
+        android:layout_below="@+id/mode_choice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <com.cymaybe.foucsurfaceview.FocusSurfaceView
+        <com.mabeijianxi.smallvideo2.view.PreView
             android:id="@+id/record_preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:visibility="visible"
-            app:focus_crop_height="267dp"
-            app:focus_crop_width="200dp"
-            app:focus_frame_can_change="true"
-            app:focus_frame_color="@android:color/holo_green_dark"
-            app:focus_frame_stroke_weight="1dp"
-            app:focus_guide_color="@android:color/holo_green_dark"
-            app:focus_guide_show_mode="not_show"
-            app:focus_guide_stroke_weight="1dp"
-            app:focus_handle_color="@android:color/holo_green_dark"
-            app:focus_handle_show_mode="not_show"
-            app:focus_handle_size="14dp"
-            app:focus_min_frame_size="50dp"
-            app:focus_mode="circle"
-            app:focus_overlay_color="#66000000"
-            app:focus_touch_padding="8dp"/>
+            app:pre_crop_height="300dp"
+            app:pre_crop_width="300dp"
+            app:pre_frame_can_change="true"
+            app:pre_frame_color="@android:color/holo_green_dark"
+            app:pre_frame_stroke_weight="1dp"
+            app:pre_guide_color="@android:color/holo_green_dark"
+            app:pre_guide_show_mode="not_show"
+            app:pre_guide_stroke_weight="1dp"
+            app:pre_handle_color="@android:color/holo_green_dark"
+            app:pre_handle_show_mode="not_show"
+            app:pre_handle_size="14dp"
+            app:pre_min_frame_size="50dp"
+            app:pre_mode="circle"
+            app:pre_overlay_color="#ff000000"
+            app:pre_touch_padding="8dp"/>
     </FrameLayout>
     <RelativeLayout
         android:id="@+id/title_layout"
@@ -92,30 +92,42 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_below="@+id/title_layout" />
+
+    <HorizontalScrollView
+        android:id="@+id/mode_choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/record_progress"
+        android:background="#9949cabd"
+        android:scrollbars="none">
+
+        <include layout="@layout/crop_mode_layout"/>
+
+    </HorizontalScrollView>
     <!-- camera_bottom_bg -->
     <RelativeLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/record_progress"
-        android:layout_marginTop="300dp"
-        android:background="@color/color_381902"
+        android:layout_marginTop="380dp"
+        android:background="@color/transparent"
         >
 
-        <CheckedTextView
-            android:id="@+id/record_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="18dip"
-            android:background="@drawable/record_delete_selector"
-            android:button="@null"
-            android:visibility="gone" />
+        <!--<CheckedTextView-->
+            <!--android:id="@+id/record_delete"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="18dip"-->
+            <!--android:background="@drawable/record_delete_selector"-->
+            <!--android:button="@null"-->
+            <!--android:visibility="gone" />-->
 
         <TextView
             android:id="@+id/record_controller"
-            android:layout_width="108dp"
-            android:layout_height="108dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/small_video_shoot"
             android:gravity="center"
